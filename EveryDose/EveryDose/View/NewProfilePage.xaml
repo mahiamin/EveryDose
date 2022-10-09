@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EveryDose.View.NewProfilePage"
+             BackgroundColor="{StaticResource pageBackgroundColor}">
+
+    <NavigationPage.TitleView>
+        <Grid RowDefinitions="Auto"
+              ColumnDefinitions="Auto,*">
+            
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="Cancel"
+                   TextColor="{StaticResource colotWhite}"
+                   FontSize="14"
+                   VerticalOptions="Center"
+                   Margin="5,0,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            
+            <Label Grid.Row="0" Grid.Column="1"
+                   Text="New Profile"
+                   TextColor="{StaticResource colotWhite}"
+                   FontSize="20"
+                   Margin="50,0,0,0"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Center"/>
+
+         
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,*"
+              RowSpacing="10">
+            
+            <Label Grid.Row="0"
+                   Text="PROFILE INFO"
+                   TextColor="{StaticResource colotGray}"
+                   FontSize="15"
+                   Margin="16,12,12,12"/>
+
+            <Frame Grid.Row="1"
+                   BackgroundColor="#FFFFFF"
+                   CornerRadius="10"
+                   Padding="10"
+                   Margin="5,0">
+                <StackLayout Orientation="Vertical"
+                             Spacing="5">
+
+                    <Entry x:Name="fName"
+                           Placeholder="First Name"
+                           Text="{Binding FirstName}"
+                           PlaceholderColor="{StaticResource colotGray}"/>
+
+                    <Entry x:Name="lName"
+                           Placeholder="Last Name"
+                           Text="{Binding LastName}"
+                           PlaceholderColor="{StaticResource colotGray}"/>
+
+                    <Entry x:Name="dob"
+                           Text="{Binding Dob}"
+                           Placeholder="Date of Birth"
+                           PlaceholderColor="{StaticResource colotGray}"/>
+
+                </StackLayout>
+                
+            </Frame>
+
+            <Button Grid.Row="2"
+                    Text="Save"
+                    TextColor="{StaticResource colotWhite}"
+                    BackgroundColor="{StaticResource colotPrimary}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    Margin="10,20"
+                    CornerRadius="8"
+                    Command="{Binding AddEmployeeCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

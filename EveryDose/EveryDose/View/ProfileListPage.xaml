@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EveryDose.View.ProfileListPage"
+             BackgroundColor="{StaticResource pageBackgroundColor}">
+    <NavigationPage.TitleView>
+        <Grid RowDefinitions="Auto"
+              ColumnDefinitions="*,Auto">
+
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="EveryDose"
+                   TextColor="#FFFFFF"
+                   FontSize="20"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"/>
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   Text="ADD"
+                   TextColor="#FFFFFF"
+                   FontSize="15"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
+                   Margin="10,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+
+            <Label Text="PROFILE LIST"
+                   TextColor="{StaticResource colotGray}"
+                   FontSize="15"
+                   Margin="12"/>
+
+            <RefreshView Command="{Binding RefreshEmployeeListCommand}"
+                         IsRefreshing="{Binding IsRefreshing}"
+                         RefreshColor="{StaticResource colotPrimary}">
+
+                <CollectionView x:Name="profileCollection"
+                                ItemsSource="{Binding ProfileList}"
+                                Margin="25,0"
+                                EmptyView="There is profile, add one"
+                                SelectionMode="Single"
+                                SelectionChangedCommand="{Binding SelectedEmployeeCommand}"
+                                SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference profileCollection}}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                                  ColumnDefinitions="*"
+                                  RowSpacing="5">
+
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       Text="{Binding FullName}"
+                                       TextColor="{StaticResource colotText}"
+                                       FontSize="15"
+                                       FontAttributes="Bold"/>
+                                <Label Grid.Row="1" Grid.Column="0"
+                                       Text="{Binding Dob}"
+                                       TextColor="{StaticResource colotText}"
+                                       FontSize="10"/>
+                                <BoxView Grid.Row="2" Grid.Column="0"
+                                         HeightRequest="1"
+                                         HorizontalOptions="FillAndExpand"
+                                         Color="LightGray"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

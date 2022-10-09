@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Effects="clr-namespace:EveryDose.Effects"
+             x:Class="EveryDose.View.ProfileDetailPage"
+             BackgroundColor="{StaticResource pageBackgroundColor}">
+
+    <NavigationPage.TitleView>
+        <Grid RowDefinitions="Auto,Auto"
+              ColumnDefinitions="*,*"
+              Padding="10">
+            <StackLayout Grid.Row="0" Grid.Column="0"
+                         Orientation="Horizontal"
+                         Spacing="2"
+                         VerticalOptions="Center">
+                <Image HeightRequest="14"
+                       WidthRequest="14"
+                       Source="backbtn.png"/>
+
+                <Label Text="Back"
+                       TextColor="{StaticResource colotWhite}"
+                       FontSize="14"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackButton_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+           
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   x:Name="saveButton"
+                   Text="Save"
+                   TextColor="{StaticResource colotWhite}"
+                   FontSize="14"
+                   Margin="10,0"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   IsVisible="False">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     Spacing="10">
+            
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  RowDefinitions="Auto,Auto"
+                  VerticalOptions="Center"
+                  HorizontalOptions="CenterAndExpand"
+                  BackgroundColor="{StaticResource colotPrimary}"
+                  Padding="6">
+
+                <Label Grid.Row="0"
+                   Text="{Binding FullName}"
+                   TextColor="{StaticResource colotWhite}"
+                   FontSize="22"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"/>
+
+                <Label Grid.Row="1"
+                   Text="{Binding Dob}"
+                   TextColor="{StaticResource colotWhite}"
+                   FontSize="15"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"/>
+
+            </Grid>
+            <Frame BackgroundColor="{StaticResource colotWhite}"
+                   CornerRadius="10"
+                   Padding="10,4"
+                   Margin="8,15,8,0">
+                <StackLayout Spacing="0">
+                    <Label Text="First Name"
+                           TextColor="{StaticResource colotGray}"
+                           FontSize="15"
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="fName"
+                           Placeholder="First Name"
+                           Text="{Binding FirstName}"
+                           Margin="8,0"
+                           PlaceholderColor="{StaticResource colotGray}"
+                           TextChanged="Text_TextChanged">
+                        <Entry.Effects>
+                            <Effects:EntryEffect/>
+                        </Entry.Effects>
+                    </Entry>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource colotWhite}"
+                   CornerRadius="10"
+                   Padding="10,4"
+                   Margin="8,0">
+                <StackLayout Spacing="0">
+                    <Label Text="Last Name"
+                           TextColor="{StaticResource colotGray}"
+                           FontSize="15"
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="lName"
+                           Placeholder="First Name"
+                           Text="{Binding LastName}"
+                           Margin="8,0"
+                           PlaceholderColor="{StaticResource colotGray}"
+                           TextChanged="Text_TextChanged">
+                        <Entry.Effects>
+                            <Effects:EntryEffect/>
+                        </Entry.Effects>
+                    </Entry>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource colotWhite}"
+                   CornerRadius="10"
+                   Padding="10,4"
+                   Margin="8,0">
+                <StackLayout Spacing="0">
+                    <Label Text="Date of Birth"
+                           TextColor="{StaticResource colotGray}"
+                           FontSize="15"
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="dob"
+                           Placeholder="First Name"
+                           Text="{Binding Dob}"
+                           Margin="8,0"
+                           PlaceholderColor="{StaticResource colotGray}"
+                           TextChanged="Text_TextChanged">
+                        <Entry.Effects>
+                            <Effects:EntryEffect/>
+                        </Entry.Effects>
+                    </Entry>
+                </StackLayout>
+            </Frame>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
